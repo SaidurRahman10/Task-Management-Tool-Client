@@ -44,7 +44,7 @@ const Header = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link  to='/'  className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold ">
+        <Link  to='/'  className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold hover:bg-transparent  border-2 hover:border-slate-600 hover:text-slate-600">
       <CheckBadgeIcon className='w-5 h-6 mr-1'></CheckBadgeIcon>  Add Task
         </Link>
       </Typography>
@@ -58,7 +58,7 @@ const Header = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to='/mytask'  className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold ">
+        <Link to='/mytask'  className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold hover:bg-transparent  border-2 hover:border-slate-600 hover:text-slate-600">
         <DocumentTextIcon className='w-5 h-6 mr-1'></DocumentTextIcon>  My Task
         </Link>
       </Typography>
@@ -68,7 +68,7 @@ const Header = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to='/completedtask'  className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold ">
+        <Link to='/completedtask'  className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md hover:bg-transparent  border-2 hover:border-slate-600 hover:text-slate-600 py-2 font-bold ">
         <ClipboardDocumentCheckIcon className='w-5 h-6 mr-1'></ClipboardDocumentCheckIcon> Completed Tasks
         </Link>
       </Typography>
@@ -78,7 +78,7 @@ const Header = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to='/' className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold ">
+        <Link to='/' className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold hover:bg-transparent  border-2 hover:border-slate-600 hover:text-slate-600">
         <Square3Stack3DIcon className='w-5 h-6 mr-1'></Square3Stack3DIcon>  Blogs
         </Link>
       </Typography>
