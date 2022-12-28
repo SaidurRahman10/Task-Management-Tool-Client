@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 import { json, useLoaderData, useNavigate } from 'react-router-dom';
 
+
 const Update = () => {
     const data = useLoaderData();
     const { register, handleSubmit, formState: { errors } } = useForm();
+
     const navigate = useNavigate();
 
     const photoUpdate = () =>{
@@ -33,7 +35,9 @@ const Update = () => {
     }
 
     return (
-        <div className=' w-[33rem] mx-auto mt-16 shadow-2xl p-10 bg-slate-100 bg-opacity-25 rounded-lg'>
+        <div  className='h-[100vh]'>
+
+        <div className='w-[33rem] mx-auto mt-16 shadow-2xl p-10 bg-slate-100 bg-opacity-25 rounded-lg '>
             <h1 className="text-center my-5 text-2xl text-white font-semibold uppercase ">Let's update this {data?.name}</h1>
 
             <form onSubmit={handleSubmit(handelUpdateTask)}>
@@ -41,6 +45,12 @@ const Update = () => {
                 <label className="label"> <span className="label-text font-semibold text-white">Task Name</span></label>
                 <input defaultValue={data.name} placeholder='Task Name' type="text" {...register("name")} className="border-primary text-gray-800 placeholder-body-color focus:border-primary active:border-primary w-96 rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD] my-2 shadow-lg" />
                
+            </div>
+            <div>
+          
+       
+              <input type="datetime-local" defaultValue={data?.date}  name="datetime" {...register("date")} id="" />
+       
             </div>
         <div className="">
          <label className="mb-3 block text-base font-medium text-white">
@@ -68,6 +78,7 @@ const Update = () => {
   reverseOrder={false}
 />
         </form>
+        </div>
         </div>
     );
 };

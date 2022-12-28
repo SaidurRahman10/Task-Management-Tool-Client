@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import DateTimePicker from 'react-datetime-picker';
+
+
 
 const AddTask = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [value, onChange] = useState(new Date());
+  
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const navigate = useNavigate()
 
-console.log(value);
+
     const handelAddTask = data => {
         const img = data.image[0];
     const formData = new FormData();
@@ -28,7 +29,8 @@ console.log(value);
             name: data.name,
             description:data.description ,
             img: imgData.data.url,
-            date:data.date
+            date:data.date,
+            isComplete: false
          
           };
         console.log(task);
@@ -53,7 +55,9 @@ console.log(value);
       });
   };
     return (
-        <div className='w-[33rem] mx-auto mt-16 shadow-2xl p-10 bg-slate-100 bg-opacity-25 rounded-lg '>
+      <div className='h-[100vh]'>
+
+        <div className='w-[33rem] mx-auto mt-16 shadow-2xl p-10 bg-slate-100 bg-opacity-25 rounded-lg'>
             <h1 className='text-3xl font-bold my-7 text-white'>ADD YOUR TASK</h1>
            <form onSubmit={handleSubmit(handelAddTask)}>
             <div className="form-control w-full max-w-xs mb-2">
@@ -63,9 +67,8 @@ console.log(value);
                 })} className="border-primary text-gray-800 placeholder-body-color focus:border-primary active:border-primary w-96 rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD] my-2 shadow-lg" />
                 {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
             </div>
-            <div>
-              <input {...register("date")}   type="text" defaultValue={value} />
-            <DateTimePicker  className=" bg-white p-2 rounded-lg"   onChange={onChange} value={value} />
+            <div className='my-2'>
+              <input className='p-3 rounded-lg shadow-xl' type="datetime-local"  name="datetime" {...register("date")} id="" required/>
             </div>
         <div className="">
          <label className="mb-3 block text-base font-medium text-white">
@@ -97,6 +100,7 @@ console.log(value);
 />
         </form>
         </div>
+      </div>
     );
 };
 

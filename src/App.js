@@ -7,7 +7,7 @@ import banner from './img/4.png'
 
 function App() {
   return (
-    <div className=" bg-fixed  bg-no-repeat bg-cover h-[100vh]"
+    <div className=" bg-fixed  bg-no-repeat bg-cover "
     style={{ backgroundImage: `url(${banner})` }}>
       <RouterProvider router={router}/>
     

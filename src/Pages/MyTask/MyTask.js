@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast, Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 
 
 const MyTask = () => {
+  const navigate = useNavigate()
     const {
         data: tasks = [],
         isLoading,
@@ -40,8 +41,35 @@ const MyTask = () => {
             
         }
       }
+      const handelComplete = (id) =>{
+        // console.log(allData)
+        let data = {isComplete:true}
+        fetch(`http://localhost:5000/alltaskComplete/${id}`,{
+
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(data)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
+                toast.success(`Complete Successfully`)
+                refetch();
+                navigate('/completedtask')
+
+
+                
+            }
+        })
+
+}
+
+ 
     return (
-        <div className='text-white  '>
+        <div className='text-white h-[100vh] '>
             <h1 className='text-center my-4 font-semibold text-3xl'>YOU HAVE {tasks?.length} TASKS LEFT</h1>
 
           
@@ -61,7 +89,7 @@ const MyTask = () => {
               <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
             Name
               </th>
-              <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left ">
               Date
               </th>
               <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
@@ -102,7 +130,7 @@ const MyTask = () => {
                 <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 border hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Delete</button>
                 </td>
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-             <button className='px-3 py-1 bg-green-500 hover:text-green-600 border hover:border-green-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Complete</button>
+             <button onClick={()=> handelComplete(task._id)} className='px-3 py-1 bg-green-500 hover:text-green-600 border hover:border-green-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Complete</button>
                 </td>
               </tr>)
             }
