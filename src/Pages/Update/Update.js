@@ -37,7 +37,7 @@ const Update = () => {
     return (
         <div  className='h-[100vh]'>
 
-        <div className='w-[33rem] mx-auto mt-16 shadow-2xl p-10 bg-slate-100 bg-opacity-25 rounded-lg '>
+        <div className='lg:w-[33rem] mx-auto mt-16 shadow-2xl p-10 bg-slate-100 bg-opacity-25 rounded-lg '>
             <h1 className="text-center my-5 text-2xl text-white font-semibold uppercase ">Let's update this {data?.name}</h1>
 
             <form onSubmit={handleSubmit(handelUpdateTask)}>
@@ -46,10 +46,10 @@ const Update = () => {
                 <input defaultValue={data.name} placeholder='Task Name' type="text" {...register("name")} className="border-primary text-gray-800 placeholder-body-color focus:border-primary active:border-primary w-96 rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD] my-2 shadow-lg" />
                
             </div>
-            <div>
+            <div className='my-2'>
           
        
-              <input type="datetime-local" defaultValue={data?.date}  name="datetime" {...register("date")} id="" />
+              <input className='p-3 rounded-lg shadow-xl' type="datetime-local" defaultValue={data?.date}  name="datetime" {...register("date")} id="" />
        
             </div>
         <div className="">

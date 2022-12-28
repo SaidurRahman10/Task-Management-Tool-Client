@@ -38,6 +38,31 @@ const CompletedTask = () => {
             
         }
       }
+      const handelNotComplete = (id) =>{
+      
+       let data = {isComplete:false}
+       fetch(`http://localhost:5000/alltaskComplete/${id}`,{
+
+           method:'PUT',
+           headers:{
+               'content-type':'application/json'
+           },
+           body: JSON.stringify(data)
+
+       })
+       .then(res => res.json())
+       .then(data => {
+           if(data.modifiedCount > 0){
+               toast.success(`Complete Successfully`)
+               refetch();
+               
+
+
+               
+           }
+       })
+
+}
     return (
         <div className='h-[100vh]'>
             <h1>This is completed task</h1>
@@ -68,6 +93,9 @@ const CompletedTask = () => {
               <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
                Delete
               </th>
+              <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+             NOT COMPLETED
+              </th>
              
             </tr>
           </thead>
@@ -91,7 +119,10 @@ const CompletedTask = () => {
             
              
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 border hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Delete</button>
+                <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 hover:border-2 hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>DELETE</button>
+                </td>
+                <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+                <button onClick={()=>handelNotComplete(task._id)} className='px-3 py-1 bg-indigo-500 hover:text-indigo-600 hover:border-2 hover:border-indigo-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'> NOT COMPLETED</button>
                 </td>
               
               </tr>)
