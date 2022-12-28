@@ -90,7 +90,7 @@ const MyTask = () => {
                 {task?.name}
                 </td>
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                dd-mm-yy
+               {task?.date}
                 </td>
             
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
