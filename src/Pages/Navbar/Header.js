@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState, useEffect  } from "react";
 import {
   Navbar,
@@ -6,11 +6,11 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
-
-
-
 import {DocumentTextIcon, Square3Stack3DIcon, ClipboardDocumentCheckIcon , CheckBadgeIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa';
+import { myContext } from '../../Context/AuthProvider';
+
 
 
 
@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [openNav, setOpenNav] = useState(false);
-
+    const {user,logOut} = useContext(myContext)
      
      
  
@@ -34,6 +34,11 @@ const Header = () => {
     );
   }, []);
 
+   const handelLogOut = () =>{
+    logOut()
+    .then(result=>{})
+    .catch(error => console.error(error))
+  }
  
  
   const navList = (
@@ -93,7 +98,7 @@ const Header = () => {
   return (
     <Navbar className="mx-auto  py-2 px-4 lg:px-8 lg:py-4 bg-white bg-opacity-40 border-0 place-content-end ">
       {/* sticky top-0 z-50  */}
-      <div className="container mx-auto flex items-center justify-end gap-20  text-blue-gray-900">
+      <div className="container mx-auto flex items-center justify-between gap-20  text-blue-gray-900">
         <Typography
           as="a"
           href="#"
@@ -106,6 +111,43 @@ const Header = () => {
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <div className="flex gap-6">
+
+            <div className="hidden md:block">
+              {user?.photoURL ? (
+                <img
+                  className=" rounded-full"
+                  style={{ height: "50px" }}
+                  src={user?.photoURL}
+                  alt={user?.displayName}
+                  title={user?.displayName}
+                />
+              ) : (
+                <FaUser
+                  className="mt-2 w-10 h-8"
+                  title={user?.displayName}
+                ></FaUser>
+              )}
+            </div>
+            <div className="mt-1">
+              {user?.uid ? (
+                <button
+                  onClick={handelLogOut}
+                  type="button"
+                  className=" hidden md:block text-white font-bold  bg-purple-600 rounded-lg text-base px-8 py-2 text-center mr-2 mb-2"
+                >
+                  Log Out
+                </button>
+              ) : (
+                <Link to="/login">
+                  <button
+                    type="button"
+                    className=" hidden md:block text-red-500 font-bold  bg-white  rounded-lg text-base px-8 py-2 text-center mr-2 mb-2"
+                  >
+                    Log In
+                  </button>
+                </Link>
+              )}
+            </div>
            
           
            
