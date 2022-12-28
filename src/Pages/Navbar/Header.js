@@ -91,7 +91,7 @@ const Header = () => {
   );
  
   return (
-    <Navbar className="mx-auto  py-2 px-4 lg:px-8 lg:py-4 bg-slate-200 border-0 place-content-end ">
+    <Navbar className="mx-auto  py-2 px-4 lg:px-8 lg:py-4 bg-slate-100 bg-opacity-50 border-0 place-content-end ">
       {/* sticky top-0 z-50  */}
       <div className="container mx-auto flex items-center justify-end gap-20  text-blue-gray-900">
         <Typography
@@ -112,7 +112,7 @@ const Header = () => {
           </div>
         <IconButton
           variant="text"
-          className=" h-8 w-8 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent  text-black lg:hidden"
+          className=" h-6 w-6 mb-1 -mt-5 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent  text-black lg:hidden"
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
