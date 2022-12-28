@@ -55,7 +55,7 @@ const AddTask = () => {
            <form onSubmit={handleSubmit(handelAddTask)}>
             <div className="form-control w-full max-w-xs mb-2">
                 <label className="label"> <span className="label-text font-semibold text-white">Task Name</span></label>
-                <input type="text" {...register("name", {
+                <input placeholder='Task Name' type="text" {...register("name", {
                     required: "Name is Required"
                 })} className="border-primary text-gray-800 placeholder-body-color focus:border-primary active:border-primary w-96 rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD] my-2 shadow-lg" />
                 {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
@@ -79,7 +79,7 @@ const AddTask = () => {
                 <label className="label"> <span className="label-text text-base font-medium text-white">Photo</span></label>
                 <input type="file" {...register("image", {
                     required: "Photo is Required"
-                })} className="block w-96 mb-5 text-sm text-white border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none  shadow-lg" />
+                })} className="block w-96 mb-5 text-sm text-black border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none  shadow-lg" />
                 {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
             </div>
             <input className='bg-slate-500 text-white  px-5 py-2 rounded-xl hover:border hover:bg-transparent hover:text-slate-500 hover:border-slate-600 hover:font-semibold duration-300 transform  mt-4' value="Create Task" type="submit" />

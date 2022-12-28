@@ -1,12 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { toast, Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 
 
 const MyTask = () => {
     const {
         data: tasks = [],
-        isLoading
+        isLoading,
+        refetch
       
       } = useQuery({
         queryKey: ["tasks"],
@@ -21,8 +24,24 @@ const MyTask = () => {
       if(isLoading){
         return <Loading></Loading>
       }
+      const handelDelete = (id) =>{
+        const agree = window.confirm(`Would you like to delete this task?`)
+        if(agree){
+            fetch(`http://localhost:5000/alltask/${id}`,{
+                method:'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.deletedCount > 0){
+                    toast.success('Delete Successfully')
+                    refetch();
+                }
+            })
+            
+        }
+      }
     return (
-        <div className='text-white h-[100vh]'>
+        <div className='text-white  '>
             <h1 className='text-center my-4 font-semibold text-3xl'>YOU HAVE {tasks?.length} TASKS LEFT</h1>
 
           
@@ -57,6 +76,10 @@ const MyTask = () => {
             </tr>
           </thead>
           <tbody>
+          <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
             {
                 tasks?.map((task,i )=>   <tr key={task._id} className="bg-slate-100 bg-opacity-30 border-b transition duration-300 ease-in-out hover:bg-gray-700 shadow-xl">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{i+1}</td>
@@ -69,11 +92,14 @@ const MyTask = () => {
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
                 dd-mm-yy
                 </td>
+            
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                <button className='px-3 py-1 bg-teal-500 hover:text-teal-600 border hover:border-teal-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Update</button>
+               <Link to={`/UPDATE/${task._id}`}>
+               <button className='px-3 py-1 bg-teal-500 hover:text-teal-600 border hover:border-teal-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Update</button>
+               </Link>
                 </td>
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                <button className='px-3 py-1 bg-red-500 hover:text-red-600 border hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Delete</button>
+                <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 border hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Delete</button>
                 </td>
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
              <button className='px-3 py-1 bg-green-500 hover:text-green-600 border hover:border-green-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Complete</button>
