@@ -10,6 +10,7 @@ import {DocumentTextIcon, Square3Stack3DIcon, ClipboardDocumentCheckIcon , Check
 import { Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import { myContext } from '../../Context/AuthProvider';
+import './header.css'
 
 
 
@@ -22,6 +23,20 @@ import { myContext } from '../../Context/AuthProvider';
 
 
 const Header = () => {
+  const [theme, setTheme] = useState("Light");
+  const toggleTheme = () => {
+    if (theme === "Light") {
+      setTheme("Dark");
+    } else {
+      setTheme("Light");
+    }
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
+
     const [openNav, setOpenNav] = useState(false);
     const {user,logOut} = useContext(myContext)
      
@@ -148,6 +163,7 @@ const Header = () => {
                 </Link>
               )}
             </div>
+            <button className="font-bolder  hidden md:block rounded-full border p-2 bg-slate-400" onClick={toggleTheme}>{theme}</button>
            
           
            

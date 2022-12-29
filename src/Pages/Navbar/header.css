@@ -1,0 +1,28 @@
+.link-underline {
+    border-bottom-width: 0;
+    background-size: 0 3px;
+    background-position: 0 70%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease-in-out;
+  }
+  
+  .link-underline-black {
+    background-image: linear-gradient(transparent, transparent),
+      linear-gradient(rgb(255, 133, 34), rgb(255, 133, 34));
+  }
+  
+  .link-underline:hover {
+    background-size: 50% 3px;
+    background-position: 0 100%;
+  }
+  .Dark {
+    
+    background: rgb(0,36,36);
+    background: linear-gradient(90deg, rgba(0,36,36,1) 6%, rgba(88,33,61,1) 35%, rgba(15,81,96,1) 96%, rgba(23,68,76,1) 99%);
+    color: white;
+  }
+  .Light {
+    background: rgb(0,36,36);
+    background: linear-gradient(90deg, rgba(0,36,36,1) 6%, rgba(198,7,104,1) 35%, rgba(0,212,255,1) 100%);
+    color: black;
+  }
