@@ -9,7 +9,8 @@ const AddTask = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
   
     const imageHostKey = process.env.REACT_APP_imgbb_key;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
 
 
     const handelAddTask = data => {

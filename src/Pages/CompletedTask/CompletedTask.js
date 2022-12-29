@@ -67,8 +67,8 @@ const CompletedTask = () => {
 
 
     return (
-        <div className='h-[100vh]'>
-            <h1>This is completed task</h1>
+        <div className=''>
+            
             <div className='text-white h-[100vh] '>
             <h1 className='text-center my-4 font-semibold text-3xl'>YOU HAVE {tasks?.length} TASKS LEFT</h1>
 

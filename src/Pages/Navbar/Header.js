@@ -83,7 +83,7 @@ const Header = () => {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to='/' className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold hover:bg-white   hover:text-slate-600">
+        <Link to='/blog' className="flex items-center hover:text-lg duration-300 transform bg-slate-600 text-white px-3 rounded-md py-2 font-bold hover:bg-white   hover:text-slate-600">
         <Square3Stack3DIcon className='w-5 h-6 mr-1'></Square3Stack3DIcon>  Blogs
         </Link>
       </Typography>
