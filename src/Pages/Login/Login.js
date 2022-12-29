@@ -7,6 +7,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { myContext } from "../../Context/AuthProvider";
 
 import Bounce from 'react-reveal/Bounce';
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -17,7 +18,9 @@ const Login = () => {
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
 
  
@@ -30,12 +33,15 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+
     console.log(email, password);
     logIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate(from, {replace: true})
+        toast.success("Login Successfully Completed");
       
       })
       .catch((error) => {
@@ -50,10 +56,13 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, {replace: true})
+        toast.success("Login Successfully Completed");
       })
       .catch((error) => {
         console.error(error);
         setError(error.message);
+      
       });
   };
 
@@ -62,10 +71,13 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, {replace: true})
+        toast.success("Login Successfully Completed");
       })
       .catch((error) => {
         console.error(error);
         setError(error.message);
+        
       });
   };
 

@@ -123,14 +123,14 @@ const MyTask = () => {
             
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
                <Link to={`/UPDATE/${task._id}`}>
-               <button className='px-3 py-1 bg-teal-500 hover:text-teal-600 hover:border-2 hover:border-teal-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Update</button>
+               <button className='px-3 py-1 bg-teal-500 hover:text-teal-600 hover:border-2 hover:border-teal-600 hover:bg-transparent  font-semibold rounded-lg transform duration-100'>Update</button>
                </Link>
                 </td>
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 hover:border-2 hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Delete</button>
+                <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 hover:border-2 hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-100'>Delete</button>
                 </td>
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-             <button onClick={()=> handelComplete(task._id)} className='px-3 py-1 bg-green-500 hover:text-green-600 hover:border-2 hover:border-green-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>Complete</button>
+             <button onClick={()=> handelComplete(task._id)} className='px-3 py-1 bg-green-500 hover:text-green-600 hover:border-2 hover:border-green-600 hover:bg-transparent  font-semibold rounded-lg transform duration-100'>Complete</button>
                 </td>
               </tr>)
             }

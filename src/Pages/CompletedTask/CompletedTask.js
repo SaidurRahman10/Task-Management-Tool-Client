@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast, Toaster } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 
 const CompletedTask = () => {
@@ -53,7 +54,7 @@ const CompletedTask = () => {
        .then(res => res.json())
        .then(data => {
            if(data.modifiedCount > 0){
-               toast.success(`Complete Successfully`)
+               toast.success(`Send it to My Mask Successfully`)
                refetch();
                
 
@@ -63,6 +64,8 @@ const CompletedTask = () => {
        })
 
 }
+
+
     return (
         <div className='h-[100vh]'>
             <h1>This is completed task</h1>
@@ -90,6 +93,9 @@ const CompletedTask = () => {
               Date
               </th>
            
+              <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+               Details
+              </th>
               <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
                Delete
               </th>
@@ -119,10 +125,15 @@ const CompletedTask = () => {
             
              
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 hover:border-2 hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'>DELETE</button>
+               <Link to={`/viewDetails/${task._id}`}>
+               <button  className='px-3 py-1 bg-yellow-700 hover:text-yellow-600 hover:border-2 hover:border-yellow-600 hover:bg-transparent  font-semibold rounded-lg transform duration-100'>DETAILS</button>
+               </Link>
                 </td>
                 <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                <button onClick={()=>handelNotComplete(task._id)} className='px-3 py-1 bg-indigo-500 hover:text-indigo-600 hover:border-2 hover:border-indigo-600 hover:bg-transparent  font-semibold rounded-lg transform duration-300'> NOT COMPLETED</button>
+                <button onClick={()=>handelDelete(task._id)} className='px-3 py-1 bg-red-500 hover:text-red-600 hover:border-2 hover:border-red-600 hover:bg-transparent  font-semibold rounded-lg transform duration-100'>DELETE</button>
+                </td>
+                <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+                <button onClick={()=>handelNotComplete(task._id)} className='px-3 py-1 bg-indigo-500 hover:text-indigo-600 hover:border-2 hover:border-indigo-600 hover:bg-transparent  font-semibold rounded-lg transform duration-100'> NOT COMPLETED</button>
                 </td>
               
               </tr>)

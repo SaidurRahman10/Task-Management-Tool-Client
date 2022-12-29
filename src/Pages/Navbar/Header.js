@@ -133,7 +133,7 @@ const Header = () => {
                 <button
                   onClick={handelLogOut}
                   type="button"
-                  className=" hidden md:block text-white font-bold  bg-purple-600 rounded-lg text-base px-8 py-2 text-center mr-2 mb-2"
+                  className=" hidden md:block text-white font-bold  bg-teal-600 rounded-lg text-base px-8 py-2 text-center mr-2 mb-2 hover:bg-transparent hover:border-2 hover:border-white duration-200 transform"
                 >
                   Log Out
                 </button>

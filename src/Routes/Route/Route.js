@@ -7,6 +7,8 @@ import Login from '../../Pages/Login/Login';
 import Registration from '../../Pages/Login/Registration';
 import MyTask from '../../Pages/MyTask/MyTask';
 import Update from '../../Pages/Update/Update';
+import ViewDetails from '../../Pages/ViewDetails/ViewDetails';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
     export  const router = createBrowserRouter([
@@ -16,7 +18,8 @@ import Update from '../../Pages/Update/Update';
             {path:"/completedtask",element:<CompletedTask></CompletedTask>},
             {path:'/UPDATE/:id',element:<Update></Update>,loader:({params})=> fetch(`http://localhost:5000/alltask/${params.id}`)},
             {path:'/signup',element:<Registration></Registration>},
-            {path:'/login',element:<Login></Login>}
+            {path:'/login',element:<Login></Login>},
+            {path:'/viewDetails/:id',element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,loader:({params})=> fetch(`http://localhost:5000/alltask/${params.id}`)}
 
         ]}
     ])
