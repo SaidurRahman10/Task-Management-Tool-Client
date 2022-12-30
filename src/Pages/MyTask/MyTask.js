@@ -3,6 +3,8 @@ import React from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { Typewriter } from 'react-simple-typewriter'
+import Fade from 'react-reveal/Fade';
 
 const MyTask = () => {
   const navigate = useNavigate();
@@ -57,10 +59,15 @@ const MyTask = () => {
   };
 
   return (
-    <div className="text-white h-[100vh] ">
-      <h1 className="text-center my-4 font-semibold text-3xl">
-        YOU HAVE {tasks?.length} TASKS LEFT
-      </h1>
+    <div className="text-white pb-80 ">
+      <Fade top>
+
+      <h1 className='text-center my-4 font-semibold text-3xl'>   <Typewriter
+                       loop={20}
+                      cursor
+                      cursorStyle='_'
+                     words={[` YOU HAVE ${tasks?.length} TASKS LEFT`, ` ONLY ${tasks?.length} TASKS HERE`, ` COMPLETE THIS ${tasks?.length} TASKS `]}
+                    /></h1>
 
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
@@ -153,12 +160,14 @@ const MyTask = () => {
                         </button>
                       </td>
                       <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
-                        <button
+                       <Link to='/completedtask'>
+                       <button
                           onClick={() => handelComplete(task._id)}
                           className="px-3 py-1 bg-green-500 hover:text-green-600 hover:border-2 hover:border-green-600 hover:bg-transparent  font-semibold rounded-lg transform duration-100"
                         >
                           Complete
                         </button>
+                       </Link>
                       </td>
                     </tr>
                   ))}
@@ -168,6 +177,8 @@ const MyTask = () => {
           </div>
         </div>
       </div>
+      </Fade>
+  
     </div>
   );
 };

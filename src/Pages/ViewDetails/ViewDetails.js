@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast, Toaster } from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import Fade from 'react-reveal/Fade';
 
 const ViewDetails = () => {
   const data = useLoaderData();
@@ -57,45 +58,50 @@ const ViewDetails = () => {
 
   return (
     <div className=" text-white pb-96">
-      <h1 className="text-3xl font-bold my-7 text-white text-center uppercase underline">
+      <h1 className="text-3xl font-bold my-2 text-white text-center uppercase underline">
         Task Details
       </h1>
-      <div className="  mx-10 mt-10  grid grid-cols-1 lg:grid-cols-2">
+      <div className="   md:w-[35rem] mx-auto">
+        <Fade top>
+
         <div>
-          <div className="  overflow-hidden shadow-lg w-96 border-2 p-8 rounded-xl ">
+          <div className="  overflow-hidden shadow-lg  border-2 p-8 rounded-xl ">
             <img className="w-full" src={img} alt="Sunset in the mountains" />
-            <div className="px-6 py-4">
+            <div className="px-6 py-2">
               <div className="font-bold text-xl mb-2">{name}</div>
               <p className="text-black text-base">{description}</p>
             </div>
-            <div className="px-6 pt-4 pb-2">
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+            <div className="px-6 pt-1 ">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 ">
                 #task
               </span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 ">
                 #Completed Task
               </span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 ">
                 #{name}
               </span>
             </div>
           </div>
         </div>
+        </Fade>
+          <Fade left>
         <div>
+
           <form onSubmit={handleSubmit(handelAddComment)}>
-            <div className="w-96 mx-auto mt-2">
+            <div className=" mx-auto mt-2">
               <textarea
                 {...register("comment", {
                   required: "Comment is Required",
                 })}
                 rows="3"
                 placeholder="Add Your Comment"
-                className="border-form-stroke text-gray-800 placeholder-body-color focus:border-primary active:border-primary     w-96 rounded-lg border-[1.5px] py-2 px-3 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD] shadow-lg"
+                className="border-form-stroke text-gray-800 placeholder-body-color focus:border-primary active:border-primary      rounded-lg border-[1.5px] py-2 px-3 font-medium outline-none transition disabled:cursor-default bg-[#F5F7FD] shadow-lg bg-opacity-70 w-full"
                 required
               ></textarea>
 
               <input
-                className="bg-teal-500 text-white  px-5 py-2 rounded-xl hover:bg-white hover:text-slate-800 hover:font-semibold duration-300 transform  mt-4"
+                className="bg-teal-500 text-white  w-full py-2 rounded-xl hover:bg-white hover:text-slate-800 hover:font-semibold duration-300 transform  mt-4"
                 value="Comment"
                 type="submit"
               />
@@ -117,6 +123,7 @@ const ViewDetails = () => {
             ))}
           </div>
         </div>
+          </Fade>
       </div>
     </div>
   );
